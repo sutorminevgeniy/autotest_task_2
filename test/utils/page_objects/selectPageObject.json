@@ -16,17 +16,24 @@
         "selector": ".slick-track>div"
     },
 
-    "Menu": {
+    "Shop Item": {
         "isCollection": false,
-        "selector": "button.hamburger-menu__button"
+        "selector": "#productStore"
     },
-    "Expanded Menu": {
+    "All Products": {
         "isCollection": false,
-        "selector": ".hamburger-menu__list"
+        "selector": "#store_all_nav a[href=\"/c/all-products\"]"
     },
-    "Globus Icon": {
+    "Select SortBy": {
         "isCollection": false,
-        "selector": ".location-selector__button"
+        "selector": "select[ng-model=\"sortBy\"]"
+    },
+    "Option LowHight": {
+        "isCollection": false,
+        "selector": "select[ng-model=\"sortBy\"]"
+    },
+    "Products": {
+        "isCollection": true,
+        "selector": ".ng-scope[ng-repeat^=\"products in productJSON\"] div[ng-if^=\"productPricesInfo\"] p"
     }
-    
 }
