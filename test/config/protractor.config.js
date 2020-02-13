@@ -2,6 +2,8 @@
 
 const path = require('path');
 const yargs = require('yargs').argv;
+
+const logger = require('./loggerConfig.js').logger;
 const reporter = require('cucumber-html-reporter');
 
 const reporterOptions = {
@@ -51,7 +53,8 @@ exports.config = {
     timeout: 70000
   },
 
-  onPrepare: () => {
+  onPrepare: () => {    
+    logger.info('Maximizing browser window');
     browser.ignoreSynchronization = true;
     browser.manage().window().maximize();
   },

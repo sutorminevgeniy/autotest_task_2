@@ -1,0 +1,32 @@
+{
+    "Search label": {
+        "isCollection": false,
+        "selector": "label[for=\"searchright\"]"
+    },
+    "Search": {
+        "isCollection": false,
+        "selector": "#searchright"
+    },
+    "Results Search": {
+        "isCollection": true,
+        "selector": ".search-results>div"
+    },
+    "Slides Search": {
+        "isCollection": true,
+        "selector": ".slick-track>div"
+    },
+
+    "Menu": {
+        "isCollection": false,
+        "selector": "button.hamburger-menu__button"
+    },
+    "Expanded Menu": {
+        "isCollection": false,
+        "selector": ".hamburger-menu__list"
+    },
+    "Globus Icon": {
+        "isCollection": false,
+        "selector": ".location-selector__button"
+    }
+    
+}

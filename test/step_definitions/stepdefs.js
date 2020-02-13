@@ -1,37 +1,41 @@
+const expect = require("chai").expect;
+
 const { Given, When, Then } = require('cucumber');
 
 const { setDefaultTimeout } = require('cucumber');
 setDefaultTimeout(60 * 1000);
 
-const expect = require("chai").expect;
-
+const elementHelper = require('./stepFunctions.js').getPageObjectElement;
 const PageFactory = require("../utils/page_objects/pageFactory");
+
 
 let homePage, searchPage;
 
-Given('today is Sunday', async function () {
-  homePage = PageFactory.getPage("Home");
 
+Given('I open {string} page', async function (pageName) {
+  homePage = PageFactory.getPage(pageName);
   homePage.open();
-
-  await homePage.search.clickFormSearch();
-  await homePage.search.sendFormSearch('WINDBREAKER');
-
 });
 
-When('I ask whether it\'s Friday yet', async function () {
-  searchPage = PageFactory.getPage("Search");
-  await searchPage.waitProducts();
+Given('I click {string}', async function (alias) {
+  await elementHelper(alias).click();
 });
 
-Then('I should be told {string}', async function (expectedAnswer) {
-  const countResultsSearch = await searchPage.getCountResults();
-
-  expect(countResultsSearch).to.equal(3);
+Given('I input {string} in {string}', async function (stringInput, alias) {
+  await elementHelper(alias).sendKeys(stringInput, protractor.Key.RETURN);
 });
 
-Then('I should be told me {string}', async function (expectedAnswer) {
-  const countSlidesSearch = await searchPage.getCountSlides();
 
-  expect(countSlidesSearch).to.equal(2);
+When('I wait until {string} page is present', async function (pageName) {
+  if (pageName === 'Search') {
+    searchPage = PageFactory.getPage(pageName);
+    await searchPage.waitProducts();
+  }
+});
+
+
+Then('Count of {string} should be {int}', async function (alias, expectedAnswer) {
+  const countResults = await elementHelper(alias).count();
+
+  expect(countResults).to.equal(expectedAnswer);
 });
