@@ -41,7 +41,7 @@ exports.config = {
     require: [path.resolve('./test/step_definitions/**/*.js')],
     ignoreUncaughtExceptions: true,
     format: ['json:./reports/report.json'],
-    tags: yargs.tag || '@region'
+    tags: yargs.tag || '@all'
   },
 
   mochaOpts: {

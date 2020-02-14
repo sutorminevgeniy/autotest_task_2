@@ -1,11 +1,5 @@
-const BasePage = require("../base_page/base_page");
-
-var ExpectedConditions = protractor.ExpectedConditions;
-
-class SearchPage extends BasePage {
+class SearchPage {
   constructor() {
-    super();
-
     this.url = "https://shop.westerndigital.com/search";
 
     this.lastResult = element(by.css('.search-results>div:last-child'));
@@ -15,7 +9,7 @@ class SearchPage extends BasePage {
     return super.open(this.url);
   }
 
-  async waitPages() {
+  async waitPage() {
     browser.wait(
       ExpectedConditions.urlContains(this.url),
       5000);

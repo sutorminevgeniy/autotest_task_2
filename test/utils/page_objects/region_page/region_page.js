@@ -1,9 +1,5 @@
-const BasePage = require("../base_page/base_page");
-
-class RegionPage extends BasePage {
+class RegionPage {
   constructor() {
-    super();
-
     this.url = "https://shop.westerndigital.com/region-selector";
     
     this.buttonRu = element(by.css("a.storeLanguageSelectorHref[href='/ru-ru']"));

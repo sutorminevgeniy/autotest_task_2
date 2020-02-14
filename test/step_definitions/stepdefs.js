@@ -10,8 +10,7 @@ const elementHelper = require('./stepFunctions.js').getPageObjectElement;
 const PageFactory = require("../utils/page_objects/pageFactory");
 
 Given('I open {string} page', async function (pageName) {
-  const page = PageFactory.getPage(pageName);
-  page.open();
+  return browser.get('https://shop.westerndigital.com');
 });
 
 Given('I click {string}', async function (alias) {
