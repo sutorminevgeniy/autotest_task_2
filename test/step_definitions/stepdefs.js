@@ -19,6 +19,11 @@ Given('I click {string}', async function (alias) {
   await elementHelper(alias).click();
 });
 
+Given('I scroll to {string}', async function (alias) {
+  logger.info(`I scroll to ${alias}`);
+  await browser.executeScript("arguments[0].scrollIntoView();", elementHelper(alias));
+});
+
 Given('I input {string} in {string}', async function (stringInput, alias) {
   logger.info(`I input ${stringInput} in ${alias}`);
   await elementHelper(alias).sendKeys(stringInput, protractor.Key.RETURN);
@@ -31,17 +36,15 @@ Given('I hover {string} of menu', function (alias) {
 
 
 When('I wait until {string} page is present', async function (pageName) {
-  waitPage = PageFactory.getPage(pageName);
+  const page = PageFactory.getPage(pageName);
 
-  if (pageName === 'Search' || pageName === 'Products') {
-    await waitPage.waitProducts();
-  }
+  await page.waitPage();
 });
 
 When('I wait until {string} page is reload', async function (pageName) {
-  waitPage = PageFactory.getPage(pageName);
-  
-  await waitPage.waitReload();
+  const page = PageFactory.getPage(pageName);
+
+  await page.waitReload();
 });
 
 
@@ -52,7 +55,7 @@ Then('Count of {string} should be {int}', async function (alias, expectedAnswer)
 });
 
 Then('Items of {string} page should sort by {string}', async function (alias, property) {
-  let result = await elementHelper(alias).map(async function(elm, index) {
+  let result = await elementHelper(alias).map(async function (elm, index) {
     let price = await elm.getText();
 
     price = Number.parseFloat(price.slice(1));
@@ -79,4 +82,22 @@ Then('Items of {string} page should sort by {string}', async function (alias, pr
   })
 
   expect(result).to.have.ordered.members(sortedResult);
+});
+
+Then('URL page should be {string}', async function (expectedURL) {
+  const uri = await browser.getCurrentUrl();
+
+  expect(uri).to.equal(expectedURL);
+});
+
+Then('HTML lang should be {string}', async function (expectedLang) {
+  const lang = await elementHelper('HTML').getAttribute('lang');
+
+  expect(lang).to.equal(expectedLang);
+});
+
+Then('Page title should be {string}', async function (expectedTitle) {
+  const title = await browser.getTitle();
+
+  expect(title).to.equal(expectedTitle);
 });

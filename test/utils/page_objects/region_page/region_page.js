@@ -13,14 +13,10 @@ class RegionPage extends BasePage {
     return super.open(this.url);
   }
 
-  async clickRussionRegion() {
-    browser.wait(
+  async waitPage() {
+    return browser.wait(
       ExpectedConditions.presenceOf(this.buttonRu),
-      5000);
-
-    browser.executeScript("arguments[0].scrollIntoView();", this.buttonRu);
-
-    return this.buttonRu.click();
+      10000);
   }
 };
 

@@ -27,13 +27,13 @@ class HomePage extends BasePage {
   };
 
   async waitPage() {
-    browser.wait(
+    await browser.wait(
       ExpectedConditions.or(
         ExpectedConditions.urlIs('https://shop.westerndigital.com/ru-ru'),
         ExpectedConditions.urlIs('https://shop.westerndigital.com')),
-      5000);
+      10000);
 
-    browser.wait(
+    return browser.wait(
       ExpectedConditions.presenceOf(this.html),
       5000);
   };

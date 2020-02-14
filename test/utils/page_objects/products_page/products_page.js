@@ -15,7 +15,7 @@ class ProductsPage extends BasePage {
     return super.open(this.url);
   }
 
-  async waitProducts() {
+  async waitPage() {
     browser.wait(
       ExpectedConditions.urlIs(this.url),
       5000);

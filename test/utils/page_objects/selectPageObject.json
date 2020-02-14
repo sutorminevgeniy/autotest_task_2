@@ -35,5 +35,18 @@
     "Products": {
         "isCollection": true,
         "selector": ".ng-scope[ng-repeat^=\"products in productJSON\"] div[ng-if^=\"productPricesInfo\"] p"
+    },
+
+    "Region": {
+        "isCollection": false,
+        "selector": ".image>a[href='/region-selector']"
+    },
+    "Russion region": {
+        "isCollection": false,
+        "selector": "a.storeLanguageSelectorHref[href='/ru-ru']"
+    },
+    "HTML": {
+        "isCollection": false,
+        "selector": "html"
     }
 }

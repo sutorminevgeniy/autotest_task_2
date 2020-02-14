@@ -15,7 +15,7 @@ class SearchPage extends BasePage {
     return super.open(this.url);
   }
 
-  async waitProducts() {
+  async waitPages() {
     browser.wait(
       ExpectedConditions.urlContains(this.url),
       5000);
