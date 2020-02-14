@@ -38,6 +38,12 @@ When('I wait until {string} page is present', async function (pageName) {
   }
 });
 
+When('I wait until {string} page is reload', async function (pageName) {
+  waitPage = PageFactory.getPage(pageName);
+  
+  await waitPage.waitReload();
+});
+
 
 Then('Count of {string} should be {int}', async function (alias, expectedAnswer) {
   const countResults = await elementHelper(alias).count();
@@ -54,18 +60,23 @@ Then('Items of {string} page should sort by {string}', async function (alias, pr
     return { index, price };
   });
 
-  sortedResult = result.sort((a, b) => {
+  let [...sortedResult] = result;
+
+  sortedResult.sort((a, b) => {
     if (a.price < b.price) {
       return -1;
-    }
-    if (a.price > b.price) {
+    } else if (a.price > b.price) {
       return 1;
     }
+
+    if (a.index < b.index) {
+      return -1;
+    } else if (a.index > b.index) {
+      return 1;
+    }
+
     return 0;
   })
-
-  console.log(result);
-  console.log(sortedResult);
 
   expect(result).to.have.ordered.members(sortedResult);
 });

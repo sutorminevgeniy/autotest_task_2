@@ -10,7 +10,7 @@ Feature: Site search
       And I click "Select SortBy"
       And I click "Option LowHight"
 
-    When I wait until "Products" page is present
+    When I wait until "Products" page is reload
     
     Then Items of "Products" page should sort by "price"
 

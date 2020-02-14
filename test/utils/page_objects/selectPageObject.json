@@ -30,7 +30,7 @@
     },
     "Option LowHight": {
         "isCollection": false,
-        "selector": "select[ng-model=\"sortBy\"]"
+        "selector": "option[value=\"priceAsce\"]"
     },
     "Products": {
         "isCollection": true,
