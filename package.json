@@ -15,7 +15,7 @@
     "cucumber": "^6.0.5",
     "cucumber-html-reporter": "^5.1.0",
     "fs-extra": "^8.1.0",
-    "mocha": "^7.0.1",
+    "mocha": "^10.2.0",
     "mochawesome": "^4.1.0",
     "protractor": "^5.4.2",
     "protractor-cucumber-framework": "^6.2.0",
